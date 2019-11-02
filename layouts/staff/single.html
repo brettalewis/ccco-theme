@@ -2,5 +2,7 @@
 <h2>{{ .Params.name }}</h2>
 <h3>{{ .Params.title }}</h3>
 
-{{ .Params.bio }}
+<img src="{{ .Params.photo }}" sizes="100vw" />
+
+{{ .Content }}
 {{ end }}
