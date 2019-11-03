@@ -1,0 +1,3 @@
+{{ $fileURL := (split .photo "/upload/") }}
+{{ $file := (delimit (slice (index $fileURL 0) "upload" | append .transforms | append (index $fileURL 1)) "/") }}
+<img src="{{ $file }}" sizes="100vw" />
