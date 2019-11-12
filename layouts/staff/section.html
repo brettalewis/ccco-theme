@@ -5,7 +5,9 @@
      <li>
          <a href="{{.RelPermalink}}">
            <div>
+             {{ with .Params.photo }}
              {{ partial "cloudinary" $photo }}
+             {{ end }}
              <br/>
            {{.Params.name}}
          </a>
