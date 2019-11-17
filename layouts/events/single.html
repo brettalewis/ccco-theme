@@ -1,0 +1,11 @@
+{{ define "main" }}
+{{ $photo := (dict "photo" .Params.photo "transforms" (slice "ar_1:1,c_crop" "c_limit,w_300" "g_face:center" "r_max"))}}
+<h2>{{ .Params.name }}</h2>
+<h3>{{ .Params.job_title }}</h3>
+
+{{ with .Params.photo }}
+{{ partial "cloudinary" $photo }}
+{{ end }}
+
+{{ .Content }}
+{{ end }}
