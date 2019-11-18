@@ -2,7 +2,7 @@
 <div><br><br></div>
 <div>Banner Image</div>
 
-{{ $events := (where (where .Site.Pages "Type" "events") ".Date" "ge" now )}}
+{{ $events := (where (where .Site.RegularPages "Type" "events") ".Date" "ge" now )}}
 
 {{ range first .Params.eventnum $events.ByDate }}
   {{ .Render "li" }}
