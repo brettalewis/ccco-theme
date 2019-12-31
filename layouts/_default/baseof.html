@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="{{.Site.LanguageCode}}">
+<html lang="en-us">
   {{ partial "head" . }}
   <body>
     {{ partial "header" . }}
     <main>
     {{ block "main" . }}{{ end }}
     </main>
-    {{ partial "footer" . }}
+    {{ partial "address" . }}
+    <script src="/js/scroll.js" async defer></script>
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {

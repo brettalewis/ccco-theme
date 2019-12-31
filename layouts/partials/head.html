@@ -1,4 +1,13 @@
+{{ $mainOptions := (dict "targetPath" "css/main.css" "outputStyle" "compressed" "enableSourceMap" false ) }}
+{{ $main := resources.Get "sass/main.sass" | resources.ToCSS $mainOptions }}
 <head>
+  <meta charset="utf-8">
   <title>{{ .Title }}</title>
+  <meta http-equiv="x-ua-compatible" content="ie-edge">
+  {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="{{ $main.RelPermalink }}" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>

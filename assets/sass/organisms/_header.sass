@@ -1,0 +1,19 @@
+header
+  background: $header-background-color
+  display: flex
+  height: $header-height
+  img
+    max-height: $header-height
+  +breakpoint("papa-bear")
+    position: sticky
+    top: 0
+    transition: $transition-sticky-header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin: 0 $header-vmargin
+    &.sticky-header
+      height: .75 * $header-height
+      margin: 0 0 (.25 * $header-height)
+      img
+        max-height: .75 * $header-height

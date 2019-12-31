@@ -1,11 +1,17 @@
 {{ define "main" }}
-<div><br><br></div>
-<div>Banner Image</div>
+<section class="about">
+  <h2>About Us</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra metus at tincidunt sagittis. Nullam quis libero sollicitudin, tristique erat in, efficitur nulla. Nulla est turpis, lobortis a auctor a, accumsan sit amet urna. Curabitur auctor ornare sem a elementum. Vestibulum et tincidunt ex, nec consequat tortor. Aenean auctor velit eget sollicitudin dapibus. Praesent ligula risus, posuere eget nisl non, scelerisque laoreet ipsum. Praesent laoreet, turpis a efficitur auctor, arcu nulla feugiat massa, a ornare quam orci ut mi.</p>
+</section>
+
+{{ partial "cta/schedule" . }}
 
 {{ $events := (where (where .Site.RegularPages "Type" "events") ".Date" "ge" now )}}
 
 {{ range first .Params.eventnum $events.ByDate }}
   {{ .Render "li" }}
 {{ end }}
-  
+
+{{ partial "cta/register" . }}
+
 {{ end }}

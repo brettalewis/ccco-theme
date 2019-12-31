@@ -1,0 +1,103 @@
+/*-------------------------------------*/
+// COLORS
+
+// Colors: Monochrome
+$titanium-white: #fff
+$platinum: #e6e6e6
+$dim-gray: #707070
+$dark-gray: #505050
+$black: #000
+
+// Colors: Common: Cool
+$blue-turquoise: #47d0d6
+$blue-slate: #7954fd
+$blue-fjord: #41516a
+$blue-robins-egg: #04e2bf
+$purple-rich-lilac: #b16ae6
+$purple-orchid: #a556d6
+
+// Colors: Common: Warm
+$yellow-select: #fdb904
+$brown: #ebbb35
+$golden-grass: #e2b22d
+$yellow-dandelion: #e8e434
+$pink-flamingo: #f860f0
+
+// Colors: Brands for Social Media
+$color-twitter: #1da1f2
+$color-youtube: #ff0000
+$color-facebook: #1877f2
+$color-instagram: #e4405f
+
+// Colors: Links
+$color-link: $blue-robins-egg
+$color-link-hover: darken($color-link, 12%)
+
+// Colors: Base Font
+$color-font-base: $dark-gray
+$color-head-base: $blue-turquoise
+
+$color-nav-base: $blue-slate
+$color-nav-sub: $dim-gray
+
+$color-menu-open: $dark-gray
+$color-menu-close: $dark-gray
+
+// Colors: Background
+$color-background: $platinum
+
+$address-background: $golden-grass $purple-orchid $blue-turquoise
+$schedule-background: $purple-rich-lilac $pink-flamingo
+$register-background: $blue-robins-egg $yellow-dandelion
+
+
+// Color system
+$white:    #fff !default
+$gray-100: #f8f9fa !default
+$gray-200: #e9ecef !default
+$gray-300: #dee2e6 !default
+$gray-400: #ced4da !default
+$gray-500: #adb5bd !default
+$gray-600: #6c757d !default
+$gray-700: #495057 !default
+$gray-800: #343a40 !default
+$gray-900: #212529 !default
+$black:    #000 !default
+
+$grays: () !default
+$grays: map-merge(("100": $gray-100, "200": $gray-200, "300": $gray-300, "400": $gray-400, "500": $gray-500, "600": $gray-600, "700": $gray-700, "800": $gray-800, "900": $gray-900), $grays)
+
+$blue:    #007bff !default
+$indigo:  #6610f2 !default
+$purple:  #6f42c1 !default
+$pink:    #e83e8c !default
+$red:     #dc3545 !default
+$orange:  #fd7e14 !default
+$yellow:  #ffc107 !default
+$green:   #28a745 !default
+$teal:    #20c997 !default
+$cyan:    #17a2b8 !default
+
+$colors: () !default
+$colors: map-merge(("blue": $blue, "indigo": $indigo, "purple": $purple, "pink": $pink, "red": $red, "orange": $orange, "yellow": $yellow, "green": $green, "teal": $teal, "cyan": $cyan, "white": $white, "gray": $gray-600, "gray-dark": $gray-800), $colors)
+
+$primary:       $blue !default
+$secondary:     $gray-600 !default
+$success:       $green !default
+$info:          $cyan !default
+$warning:       $yellow !default
+$danger:        $red !default
+$light:         $gray-100 !default
+$dark:          $gray-800 !default
+
+$theme-colors: () !default
+$theme-colors: map-merge(("primary": $primary, "secondary": $secondary, "success": $success, "info": $info, "warning": $warning, "danger": $danger, "light": $light, "dark": $dark), $theme-colors)
+
+$theme-color-interval: 8% !default
+
+$navColors: $cyan, $teal, $pink, $orange, $yellow, $green
+$navColorsLength: length($navColors)
+
+$color-button-background: $yellow-select
+$color-button-text: $titanium-white
+

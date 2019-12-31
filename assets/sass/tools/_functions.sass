@@ -1,0 +1,55 @@
+$grays        : ()   !default
+$colors       : ()   !default
+$theme-colors : ()   !default
+$font-size    : 16px !default
+
+@function context-calc($scale, $base, $value)
+  @return ($scale/$base)#{$value}
+
+@function measure-margin($scale, $measure, $value)
+  $pixelValue: $measure/$scale
+  $remValue: $pixelValue * $font-base
+
+  @if $value == rem
+    @return $pixelValue#{$value}
+  @else if $value == em
+    @return ($remValue/$scale)#{$value}
+  @else
+    @return $remValue#{$value}
+
+// Retrieve color Sass maps
+@function color($key: "blue")
+  @return map-get($colors, $key)
+
+@function theme-color($key: "primary")
+  @return map-get($theme-colors, $key)
+
+@function gray($key: "100")
+  @return map-get($grays, $key)
+
+// Request a theme color level
+@function theme-color-level($color-name: "primary", $level: 0)
+  $color: theme-color($color-name)
+  $color-base: if($level > 0, $black, $white)
+  $level: abs($level)
+
+  @return mix($color-base, $color, $level * $theme-color-interval)s
+
+@function my-rgba($color: #ffffff, $opacity: 1)
+  @return "rgba(#{red($color)}, #{green($color)}, #{blue($color)}, #{$opacity})"
+  
+@function lin-gradient($color-list, $opacity: 1)
+  $retval: []
+  $num-colors: length($color-list) - 1
+  @for $_ from 0 through $num-colors
+    $retval: append($retval, "#{my-rgba(nth($color-list, $_ + 1), $opacity)} #{100 * $_/$num-colors}%", $separator: comma)
+  @return linear-gradient(90deg, #{($retval)})
+
+@function reverse($list, $recursive: false)
+  $result: ()
+  @for $i from length($list) * -1 through -1
+    @if type-of(nth($list, abs($i))) == list and $recursive
+      $result: append($result, reverse(nth($list, abs($i)), $recursive))
+    @else
+      $result: append($result, nth($list, abs($i)))
+  @return $result
