@@ -1,4 +1,7 @@
 <article class="card">
+  {{ if lt .openings.calculated_openings 1 }}
+  <span class="full">FULL</span>
+  {{ end }}
   <h5>{{ .name }}</h5>
   <p>
   {{ if (gt (len .instructors) 1) }}
