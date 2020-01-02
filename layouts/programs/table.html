@@ -1,0 +1,15 @@
+{{ define "main" }}
+
+<style>body{background-color: #e6e6e6;}</style>
+
+{{ $jrURL := "https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJSON?" }}
+
+{{ $classList := getJSON $jrURL (querify "OrgID" 525640 "Session" .Params.session "Cat1" .Params.category1 "Cat2" .Params.category2 "Cat3" .Params.category3) }}
+
+<section class="card-list">
+{{ range $classList.rows }}
+  {{ partial "program" . }}
+{{ end }}
+</section>
+
+{{ end }}

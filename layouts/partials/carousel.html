@@ -1,0 +1,19 @@
+<section class="carousel">
+  <div id="prev">&#xFF1C;</div>
+  <div class="siema">
+    {{ range .Params.galleryImages }}
+      <div class="photo" style="background-image: url('{{ . }}')"></div>
+    {{ end }}
+  </div>
+  <div id="next">&#xFF1E;</div>
+</section>
+
+<script src="/js/siema.min.js"></script>
+
+<script>
+  const mySiema = new Siema({
+    loop: true
+  });
+  document.querySelector('#prev').addEventListener('click', () => mySiema.prev());
+  document.querySelector('#next').addEventListener('click', () => mySiema.next());
+</script>

@@ -8,7 +8,16 @@
     </main>
     {{ partial "address" . }}
     <script src="/js/scroll.js" async defer></script>
+    
+    <script src="/js/siema.min.js"></script>
+
     <script>
+      const mySiema = new Siema({
+        loop: true
+      });
+      document.querySelector('#prev').addEventListener('click', () => mySiema.prev());
+      document.querySelector('#next').addEventListener('click', () => mySiema.next());
+
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
           if (!user) {
