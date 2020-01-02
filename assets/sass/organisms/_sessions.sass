@@ -4,9 +4,15 @@
   flex-direction: column
   .fall-session
     display: flex
-    justify-content: space-between
-    padding-bottom: $vert-padding
+    flex-direction: column
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    img
+      padding: 5px
+    +breakpoint("papa-bear")
+      flex-direction: row
+      padding-bottom: $vert-padding
   .winter-session
     display: flex
     justify-content: center
-    
