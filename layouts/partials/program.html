@@ -1,3 +1,6 @@
+{{ $id := replaceRE ".*preLoadClassID=([0-9]+)&.*" "id-$1" .online_reg_link }}
+
+<a class="unstyled" href="#{{ $id }}">
 <article class="card">
   {{ if lt .openings.calculated_openings 1 }}
   <span class="full">FULL</span>
@@ -14,3 +17,20 @@
     {{ .start_time }} - {{ .end_time }}
   </span>    
 </article>
+</a>
+
+<section class="css-modal" id="{{ $id }}" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
+    <div class="css-modal_inner">
+        <div class="css-modal_header">{{ .name }}</div>
+        <div class="css-modal_content">{{ .description }}</div>
+        <div class="css-modal_footer">
+          {{ if ge .openings.calculated_openings 1 }}
+            <a href="{{.online_reg_link}}" class="button">Register</a>
+          {{ end }}
+          <a href="#!" class="button" title="Close this modal" data-close="Close" data-dismiss="modal">Close</a>
+        </div>
+    </div>
+
+    <a href="#!" class="button" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
+</section>
