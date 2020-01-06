@@ -1,17 +1,19 @@
 {{ define "main" }}
-<ul>
+<ul class="staff-list">
   {{ range .Pages }}
-    {{ $photo := (dict "photo" .Params.photo "transforms" (slice "ar_1:1,c_crop" "c_limit,w_100" "g_face:center" "r_max"))}}
-     <li>
-         <a href="{{.RelPermalink}}">
-           <div>
-             {{ with .Params.photo }}
-             {{ partial "cloudinary" $photo }}
-             {{ end }}
-             <br/>
-           {{.Params.name}}
-         </a>
-     </li>
+    {{ $transforms := (slice "ar_1:1,c_crop" "c_limit,w_300" "g_face:center") }}
+    {{ $fileURL := (split .Params.photo "/upload/") }}
+    {{ $file := (delimit (slice (index $fileURL 0) "upload" | append $transforms | append (index $fileURL 1)) "/") }}
+    <li>
+      <a href="{{.RelPermalink}}">
+        <figure class="staff-card">
+          <img src="{{ $file }}" alt="{{ .Params.name }}" />
+          <figcaption>
+            <p>{{ .Params.name }}</p>
+          </figcaption>
+        </figure>
+      </a>
+    </li>
   {{ end }}
 </ul>
 {{ end }}

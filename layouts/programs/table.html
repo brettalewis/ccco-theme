@@ -6,10 +6,25 @@
 
 {{ $classList := getJSON $jrURL (querify "OrgID" 525640 "Session" .Params.session "Cat1" .Params.category1 "Cat2" .Params.category2 "Cat3" .Params.category3) }}
 
-<section class="card-list">
-{{ range $classList.rows }}
-  {{ partial "program" . }}
+{{ $mon := where $classList.rows ".meeting_days.mon" true }}
+{{ $tue := where $classList.rows ".meeting_days.tue" true }}
+{{ $wed := where $classList.rows ".meeting_days.wed" true }}
+{{ $thu := where $classList.rows ".meeting_days.thu" true }}
+{{ $fri := where $classList.rows ".meeting_days.fri" true }}
+{{ $sat := where $classList.rows ".meeting_days.sat" true }}
+{{ $sun := where $classList.rows ".meeting_days.sun" true }}
+{{ $byDay := (slice $mon $tue $wed $thu $fri $sat $sun) }}
+{{ $days := (slice "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday" )}}
+
+{{ range $idx, $day := $byDay }}
+  {{ if (gt (len $day) 0) }}
+    <h3 class="card-header">{{ index $days $idx }}</h3>
+    <section class="card-list">
+      {{ range sort $day ".start_time" "asc" }}
+        {{ partial "program" . }}
+      {{ end }}
+    </section>
+  {{ end }}
 {{ end }}
-</section>
 
 {{ end }}

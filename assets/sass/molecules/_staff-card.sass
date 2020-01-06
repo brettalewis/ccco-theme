@@ -1,0 +1,35 @@
+$staff-card-border-color: #000 !default
+$staff-card-border-radius: 10px !default
+$staff-card-border-width: 1px !default
+$staff-card-width: 300px !default
+$staff-card-caption-height: 60px !default
+$staff-card-text-color: #fff !default
+$staff-card-font-weight: 400 !default
+$staff-card-background-color: #ff0 !default
+
+.staff-list
+  list-style: none
+  li
+    a
+      +unstyled-link
+
+.staff-card
+  width: $staff-card-width
+  img
+    border: $staff-card-border-width $staff-card-border-color solid
+    border-radius: $staff-card-border-radius $staff-card-border-radius 0 0
+  figcaption
+    width: $staff-card-width + 2 * $staff-card-border-width
+    margin-top: -1 * $staff-card-border-radius
+    border-radius: 0 0 $staff-card-border-radius $staff-card-border-radius
+    background: $staff-card-background-color
+    height: $staff-card-caption-height
+    p
+      margin: 0
+      padding: 0
+      text-align: center
+      vertical-align: middle
+      color: $staff-card-text-color
+      font-weight: $staff-card-font-weight
+      line-height: $staff-card-caption-height
+  

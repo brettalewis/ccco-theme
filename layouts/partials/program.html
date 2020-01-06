@@ -1,5 +1,14 @@
 {{ $id := replaceRE ".*preLoadClassID=([0-9]+)&.*" "id-$1" .online_reg_link }}
-
+{{ $start_hour := (mod (int (replaceRE "^0?([1-2]?[0-9]):.*" "$1" .start_time)) 12) }}
+{{ if eq $start_hour 0 }}
+{{ $start_hour = 12 }}
+{{ end }}
+{{ $start_time := replaceRE "^[^:]+" $start_hour .start_time }}
+{{ $end_hour := (mod (int (replaceRE "^0?([1-2]?[0-9]):.*" "$1" .end_time)) 12) }}
+{{ if eq $end_hour 0 }}
+{{ $end_hour = 12 }}
+{{ end }}
+{{ $end_time := replaceRE "^[^:]+" $end_hour .end_time }}
 <a class="unstyled" href="#{{ $id }}">
 <article class="card">
   {{ if lt .openings.calculated_openings 1 }}
@@ -14,7 +23,7 @@
   {{ end }}
   <span>
     {{ if .meeting_days.mon }}Mon{{ else if .meeting_days.tue }}Tue{{ else if .meeting_days.wed }}Wed{{ else if .meeting_days.thu }}Thu{{ else if .meeting_days.fri }}Fri{{ else if .meeting_days.sat }}Sat{{ else if .meeting_days.sun }}Sun{{end}}
-    {{ .start_time }} - {{ .end_time }}
+    {{ $start_time }} - {{ $end_time }}
   </span>    
 </article>
 </a>
@@ -31,6 +40,4 @@
           <a href="#!" class="button" title="Close this modal" data-close="Close" data-dismiss="modal">Close</a>
         </div>
     </div>
-
-    <a href="#!" class="button" title="Close this modal" data-close="Close" data-dismiss="modal">?</a>
 </section>

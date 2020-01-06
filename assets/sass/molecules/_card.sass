@@ -1,42 +1,66 @@
+$card-list-vpadding: 0 !default
+$card-list-hpadding: 0 !default
+$card-list-background-color: #fff !default
+$card-list-header-margin-top: 1rem !default
+$card-padding: 10px !default
+$card-margin: 10px !default
+$card-width: 200px !default
+$card-height: 100px !default
+$card-border-radius: 3px !default
+$card-background-color: #eee !default
+$card-box-shadow: none !default
+$card-header-font-size: 16px !default
+$card-header-text-color: #000 !default
+$card-body-font-size: 12px !default
+$card-body-margin: 0 !default
+$card-ribbon-background-color: #f00 !default
+$card-ribbon-text-color: #fff !default
+
 .card-list
   display: flex
   flex-wrap: wrap
-  padding-left: 55px
-  padding-right: 55px
-  background-color: $platinum
+  background-color: $card-list-background-color
+  padding: $card-list-vpadding $card-list-hpadding
+
+.card-header
+  margin-top: $card-list-header-margin-top
+  padding-left: $card-list-hpadding + $card-padding
+  padding-right: $card-list-hpadding + $card-padding
 
 .card
-  position: relative
-  padding: 10px
-  margin: 10px
-  width: 250px
-  height: 75px
-  border-radius: 5px
-  background-color: $titanium-white
   display: flex
   flex-direction: column
   justify-content: space-between
   overflow: hidden
+  position: relative
+  background-color: $card-background-color
+  border-radius: $card-border-radius
+  box-shadow: $card-box-shadow
+  height: $card-height
+  margin: $card-margin
+  padding: $card-padding
+  width: $card-width
   h5
-    font-size: 18px
     text-transform: none
-    color: #484848
-    margin-bottom: 10px
+    color: $card-header-text-color
+    font-size: $card-header-font-size
+    margin-bottom: $card-margin
   p
-    font-size: 12px
     display: flex
     justify-content: space-between
+    font-size: $card-body-font-size
+    margin: $card-body-margin
   .full
     width: 50px
-    background: #e43
     position: absolute
-    top: 8px
-    right: -13px
+    top: (cos(45deg) * 10px)
+    right: (sin(45deg) * -20px)
     font-size: 10px
     text-align: center
     line-height: 12px
     letter-spacing: 1px
-    color: #f0f0f0
     transform: rotate(45deg)
     -webkit-transform: rotate(45deg)
+    background: $card-ribbon-background-color
+    color: $card-ribbon-text-color
 
