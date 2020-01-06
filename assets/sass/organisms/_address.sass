@@ -1,12 +1,24 @@
 address
+  display: flex
+  flex-direction: column
+  +breakpoint('mama-bear')
+    flex-direction: row
+  align-items: center
+  justify-content: space-between
+  padding: 18px
   background: $address-background-color
   color: $address-text-color
+  margin-bottom: $header-vmargin
   font:
     family: $address-font-family
     style: $address-font-style
     size: $address-font-size
-  display: flex
-  align-items: center
-  justify-content: space-between
-  padding: 18px
-  margin-bottom: $header-vmargin
+  .physical
+    display: flex
+    flex-direction: column
+    +breakpoint('mama-bear')
+      flex-direction: row
+      span
+        padding: 10px
+    align-items: center
+    
