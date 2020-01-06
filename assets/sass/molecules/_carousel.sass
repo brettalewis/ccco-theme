@@ -6,12 +6,17 @@
   .siema
     width: 80vw
     .photo
-      height: $carousel-photo-height
+      height: $carousel-photo-height * 5/7
+      +breakpoint('papa-bear')
+        height: $carousel-photo-height
       background-position: center
       background-size: contain
       background-repeat: no-repeat
   #next,
   #prev
+    display: none
+    +breakpoint('papa-bear')
+      display: block
     width: 60px
     height: 30px
     padding: 15px 0
