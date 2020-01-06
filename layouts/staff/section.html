@@ -5,7 +5,7 @@
     {{ $fileURL := (split .Params.photo "/upload/") }}
     {{ $file := (delimit (slice (index $fileURL 0) "upload" | append $transforms | append (index $fileURL 1)) "/") }}
     <li>
-      <a href="{{.RelPermalink}}">
+      <a href="#{{ .Params.name | urlize }}">
         <figure class="staff-card">
           <img src="{{ $file }}" alt="{{ .Params.name }}" />
           <figcaption>
@@ -13,6 +13,20 @@
           </figcaption>
         </figure>
       </a>
+      <section class="css-modal" id="{{ .Params.name | urlize }}" tabindex="-1" role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
+          <div class="css-modal_inner">
+            <div class="css-modal_header"><a href="#!" class="close-icon">&#x2715;</a></div>
+              <div class="css-modal_content">
+                <div class="staff-modal">
+                  <img src="{{ $file }}"/>
+                  <strong>{{ .Params.name }}</strong>
+                  <em>{{ .Params.job_title }}</em>
+                  <p>{{ .Content }}</p>
+                </div>
+              </div>
+          </div>
+      </section>
     </li>
   {{ end }}
 </ul>
