@@ -1,105 +1,44 @@
 {{ define "main" }}
 
-<style>
+<h2 class="contact-header">Contact</h2>
 
-  h2 {
-    text-align: center;
-    text-decoration: underline;
-  }
+<div class="contact-grid">
+  <div class="contact-address">Address: <a href="https://www.google.com/maps/place/CC+%26+Co+Dance+Complex/@35.90013,-78.656001,17z/data=!4m13!1m7!3m6!1s0x89ac57ff019f5d9d:0xed038a778669678b!2s8863+Six+Forks+Rd,+Raleigh,+NC+27615!3b1!8m2!3d35.9001257!4d-78.6538123!3m4!1s0x89ac56325089b5e9:0x1ac97989dfb708db!8m2!3d35.9000928!4d-78.6541527">8863 Six Forks Road Raleigh, NC, 27615</a></div>
+  <div class="contact-phone">Call: <a href="tel:+19198465200">(919)846-5200</a></div>
+  <div class="contact-email">Email: <a href="mailto:info@cccodance.com">info@cccodance.com</a></div>
+  <div class="contact-facebook">Facebook: <a href="https://www.facebook.com/cccodance/">facebook.com/cccodance</a></div>
+  <div class="contact-twitter">Twitter: <a href="https://twitter.com/ccco_dance">@ccco_dance</a></div>
+  <div class="contact-instagram">Instagram: <a href="https://www.instagram.com/ccco_dance_complex">@ccco_dance_complex</a></div>
+</div>
 
-  .right {
-    float: right;
-    margin: 128px;
-    padding-right: 64px;
-  }
-
-  .left {
-    float: left;
-    margin: 128px;
-    padding-left: 64px;
-  }
-
-  .feedback {
-    margin: 128px;
-  }
-
-  .message {
-    padding-top: 100000px;
-  }
-
-  #address {
-    text-align: center;
-  }
-
-  #numberEmail, #socialMedia {
-    text-align: center;
-  }
-
-  #email {
-    padding-left: 5em;
-  }
-
-  #facebook {
-    padding-left: 5em;
-    padding-right: 5em;
-  }
-
-
-</style>
-
-
-  <h2>Contact</h2>
-
-  <div id="container">
-    <div id="address">Address: <a href="https://www.google.com/maps/place/CC+%26+Co+Dance+Complex/@35.90013,-78.656001,17z/data=!4m13!1m7!3m6!1s0x89ac57ff019f5d9d:0xed038a778669678b!2s8863+Six+Forks+Rd,+Raleigh,+NC+27615!3b1!8m2!3d35.9001257!4d-78.6538123!3m4!1s0x89ac56325089b5e9:0x1ac97989dfb708db!8m2!3d35.9000928!4d-78.6541527">8863 Six Forks Road Raleigh, NC, 27615</a></div>
-    <br>
-    <div id="numberEmail">
-    <span id="number">Call: <a href="google.com">(919)846-5200</a></span>
-    <span id="email">Email: <a href="google.com">info@cccodance.com</a></span>
-    </div>
-
-    <br>
-    <div id="socialMedia">
-    <span>Twitter: <a href="https://twitter.com/ccco_dance">@ccco_dance</a></span>
-    <span id="facebook">Facebook: <a href="https://www.facebook.com/cccodance/">facebook.com/CCCO</a></span>
-    <span>Instagram: <a href="https://www.instagram.com/ccco_dance_complex/">instagram.com/CCCO</a></span>
-    </div>
-
-    <div class="left">Studio Hours:
-      <div>Monday: 9am - 10pm</div>
-      <div>Tuesday: 9am - 10pm</div>
-      <div>Wednesday: 9am - 10pm</div>
-      <div>Thursday: 9am - 10pm</div>
-      <div>Friday: 9am - 10pm</div>
-      <div>Saturday: 9am - 10pm</div>
-      <div>Sunday: 9am - 10pm</div>
-    </div>
-
-
-    <div class="right">CC's Closet Hours
-      <div>Monday: 9am - 10pm</div>
-      <div>Tuesday: 9am - 10pm</div>
-      <div>Wednesday: 9am - 10pm</div>
-      <div>Thursday: 9am - 10pm</div>
-      <div>Friday: 9am - 10pm</div>
-      <div>Saturday: 9am - 10pm</div>
-      <div>Sunday: 9am - 10pm</div>
-    </div>
+<div class="hours-grid">
+  <div class="studio-hours">
+    <strong>Studio Hours</strong>
+    <div>Monday: 9am - 10pm</div>
+    <div>Tuesday: 9am - 10pm</div>
+    <div>Wednesday: 9am - 10pm</div>
+    <div>Thursday: 9am - 10pm</div>
+    <div>Friday: 9am - 10pm</div>
+    <div>Saturday: 9am - 10pm</div>
+    <div>Sunday: 9am - 10pm</div>
   </div>
-
-
-<br>
-<br>
-  <div class="feedback">
-    <form class="feedback" action="index.html" method="post">
-    <label class="message" for="comment">Leave us a message</label>
-    <br>
-    <textarea name="feedback" rows="10" cols="100" id="comment"></textarea>
-    <br>
-    <input type="submit" value="Submit">
-
-    </form>
+  <div class="closet-hours">
+    <strong>CC's Closet Hours</strong>
+    <div>Monday: 9am - 10pm</div>
+    <div>Tuesday: 9am - 10pm</div>
+    <div>Wednesday: 9am - 10pm</div>
+    <div>Thursday: 9am - 10pm</div>
+    <div>Friday: 9am - 10pm</div>
+    <div>Saturday: 9am - 10pm</div>
+    <div>Sunday: 9am - 10pm</div>    
   </div>
+</div>
+
+<form class="feedback-form">
+  <label class="comment-label" for="comment">Leave us a message!</label>
+  <textarea class="comment" name="comment" rows="10"></textarea>
+  <input class="comment-button" type="submit" value="Submit">
+</form>
 
 
 {{ end }}
