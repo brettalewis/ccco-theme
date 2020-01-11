@@ -14,6 +14,6 @@
   const mySiema = new Siema({
     loop: true
   });
-  document.querySelector('#prev').addEventListener('click', () => mySiema.prev());
-  document.querySelector('#next').addEventListener('click', () => mySiema.next());
+  document.querySelector('#prev').addEventListener('click', () => mySiema.prev(), {passive: true});
+  document.querySelector('#next').addEventListener('click', () => mySiema.next(), {passive: true});
 </script>
