@@ -3,8 +3,11 @@
   
 %socialmedia
   fill: $socialmedia-color
-  height: $socialmedia-height
-  padding: $socialmedia-padding
+  height: $socialmedia-mobile-height
+  padding: $socialmedia-mobile-padding
+  +breakpoint('papa-bear')
+    height: $socialmedia-height
+    padding: $socialmedia-padding
   vertical-align: middle
   
 %cta
