@@ -1,0 +1,38 @@
+$event-card-border-color: #000 !default
+$event-card-border-radius: 10px !default
+$event-card-border-width: 1px !default
+$event-card-width: 310px !default
+$event-card-caption-height: 60px !default
+$event-card-text-color: #fff !default
+$event-card-font-weight: 400 !default
+$event-card-background-color: #ff0 !default
+
+.event-list
+  list-style: none
+  padding: 40px 0
+  li
+    a
+      +unstyled-link
+
+.event-card
+  width: $event-card-width
+  .event-photo
+    border: $event-card-border-width $event-card-border-color solid
+    border-radius: $event-card-border-radius
+    height: 276px
+    position: relative
+    span
+      background: linear-gradient(0deg, #222 90%, transparent 100%)
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      border-radius: 0 0 $event-card-border-radius/1.67 $event-card-border-radius/1.67
+      color: $blue-robins-egg
+      text-align: center
+      min-height: 58px
+  .event-description
+    font-family: $font-family-2
+    font-weight: $font-light
+    font-size: 14px  
+    min-height: 70px

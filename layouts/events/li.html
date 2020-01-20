@@ -1,11 +1,14 @@
-{{ $photo := (dict "photo" .Params.photo "transforms" (slice "ar_1:1,c_crop" "c_limit,w_100" "g_face:center" "r_max"))}}
-<li>
+<li class="event-card">
     <a href="{{.RelPermalink}}">
-      <div>
-        {{ with .Params.photo }}
-        {{ partial "cloudinary" $photo }}
-        {{ end }}
-        <br/>
-      {{.Params.name}}
+      <div class="event-photo" style="background: url('{{.Params.photo}}')">
+        <span>
+          <strong> {{ .Params.name }}</strong>
+          <br />
+          Jan 31 @ 4:30pm
+        </span>
+      </div>
+      <div class="event-description">
+          {{ .Params.description }}
+      </div>
     </a>
 </li>

@@ -1,11 +1,14 @@
+// Setting defaults
 $grays        : ()   !default
 $colors       : ()   !default
 $theme-colors : ()   !default
 $font-size    : 16px !default
 
+// context-calc
 @function context-calc($scale, $base, $value)
   @return ($scale/$base)#{$value}
 
+// measure-margin
 @function measure-margin($scale, $measure, $value)
   $pixelValue: $measure/$scale
   $remValue: $pixelValue * $font-base
@@ -17,13 +20,15 @@ $font-size    : 16px !default
   @else
     @return $remValue#{$value}
 
-// Retrieve color Sass maps
+// color: Retrieve color Sass maps
 @function color($key: "blue")
   @return map-get($colors, $key)
 
+// theme-color: 
 @function theme-color($key: "primary")
   @return map-get($theme-colors, $key)
 
+// gray
 @function gray($key: "100")
   @return map-get($grays, $key)
 
@@ -54,6 +59,7 @@ $font-size    : 16px !default
       $result: append($result, nth($list, abs($i)))
   @return $result
 
+// pow: calculate a number to an exponent
 @function pow($number, $exp)
   $value: 1
   @if $exp > 0
@@ -63,7 +69,8 @@ $font-size    : 16px !default
     @for $i from 1 through -$exp
       $value: $value / $number
   @return $value
-  
+
+// fact: calculate the factorial number  
 @function fact($number)
   $value: 1
   @if $number > 0
@@ -71,9 +78,11 @@ $font-size    : 16px !default
       $value: $value * $i
   @return $value
 
+// pi: return pi
 @function pi()
   @return 3.14159265359
 
+// rad: calculate the radians for a given angle
 @function rad($angle)
   $unit: unit($angle)
   $unitless: $angle / ($angle * 0 + 1)
@@ -82,6 +91,8 @@ $font-size    : 16px !default
     $unitless: $unitless / 180 * pi()
   @return $unitless
 
+
+// sin: calculate the sine of an angle
 @function sin($angle)
   $sin: 0
   $angle: rad($angle)
@@ -90,6 +101,7 @@ $font-size    : 16px !default
     $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1)
   @return $sin
 
+// cos: calculate the cosine of an angle
 @function cos($angle)
   $cos: 0
   $angle: rad($angle)
@@ -98,5 +110,6 @@ $font-size    : 16px !default
     $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i)
   @return $cos
 
+// tan: calculate the tangent of an angle
 @function tan($angle) 
   @return sin($angle) / cos($angle)

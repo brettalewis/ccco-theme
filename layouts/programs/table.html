@@ -19,11 +19,11 @@
 {{ range $idx, $day := $byDay }}
   {{ if (gt (len $day) 0) }}
     <h3 class="card-header">{{ index $days $idx }}</h3>
-    <section class="card-list">
+    <article class="card-list">
       {{ range sort $day ".start_time" "asc" }}
         {{ partial "program" . }}
       {{ end }}
-    </section>
+    </article>
   {{ end }}
 {{ end }}
 
