@@ -15,6 +15,7 @@
 {{ if (gt (len $events) 0) }}
   <article class="whats-happening">
     <h2>What's happening</h2>
+    <hr class="heading-rule centered">
     <ul class="event-list">
   {{ range first .Params.eventnum $events.ByDate }}
     {{ .Render "li" }}
