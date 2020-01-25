@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<style>body{background-color: #e6e6e6;}</style>
+<style>body{background-color: #e6e6e6;}.hidden{display: none;}</style>
 
 {{ $jrURL := "https://app.jackrabbitclass.com/jr3.0/Openings/OpeningsJSON?" }}
 
@@ -16,14 +16,69 @@
 {{ $byDay := (slice $mon $tue $wed $thu $fri $sat $sun) }}
 {{ $days := (slice "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday" )}}
 
+{{ if (and (ne .Params.minage nil) (ne .Params.maxage nil)) }}
+<h2 style="text-align: center;">{{ .Params.title }}</h2>
+<hr class="heading-rule centered">
+<section class="filters">
+  <span>Filter by age: </span>
+  <select id="minage" onchange="filter()">
+    <option value="0">No Minimum</option>
+    {{ range $year := (slice 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18) }}
+      {{ if (and (ge $year $.Params.minage) (le $year $.Params.maxage)) }}
+        <option value="{{ $year }}">{{ $year }}</option>
+      {{ end }}
+    {{ end }}
+  </select>
+
+  <select id="maxage" onchange="filter()">
+    <option value="99">No Maximum</option>
+    {{ range $year := (slice 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18) }}
+      {{ if (and (ge $year $.Params.minage) (le $year $.Params.maxage)) }}
+        <option value="{{ $year }}">{{ $year }}</option>
+      {{ end }}
+    {{ end }}
+  </select>
+</section>
+<script>
+  function filter() {
+    const minage = parseInt(document.getElementById('minage').value);
+    const maxage = parseInt(document.getElementById('maxage').value);
+    for (const option of document.getElementById('minage').options) {
+        option.disabled = (parseInt(option.value) > maxage);
+    }
+    for (const option of document.getElementById('maxage').options) {
+        option.disabled = (parseInt(option.value) < minage);
+    }
+    for (const card of document.getElementsByClassName('card')) {
+        const cardmin = parseInt(card.dataset.minage);
+        const cardmax = parseInt(card.dataset.maxage);
+        if ((cardmax < minage) || (cardmin > maxage)) {
+            card.classList.add('hidden');
+        } else {
+            card.classList.remove('hidden');
+        };
+    }
+    for (const head of document.getElementsByClassName('card-list-container')) {
+       if (head.getElementsByClassName('card').length === head.getElementsByClassName('hidden').length) {
+           head.classList.add('hidden');
+       } else {
+           head.classList.remove('hidden');
+       }
+    }
+  }
+</script>
+{{ end }}
+
 {{ range $idx, $day := $byDay }}
   {{ if (gt (len $day) 0) }}
+    <div class="card-list-container">
     <h3 class="card-header">{{ index $days $idx }}</h3>
     <article class="card-list">
       {{ range sort $day ".start_time" "asc" }}
         {{ partial "program" . }}
       {{ end }}
     </article>
+    </div>
   {{ end }}
 {{ end }}
 

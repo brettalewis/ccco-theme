@@ -1,4 +1,6 @@
 {{ $id := replaceRE ".*preLoadClassID=([0-9]+)&.*" "id-$1" .online_reg_link }}
+{{ $min_age := (cond (eq .min_age "") 0 (replaceRE "^P0?([0-9]+)Y[0-1][0-9]M" "$1" .min_age )) }}
+{{ $max_age := (cond (eq .max_age "") 99 (replaceRE "^P0?([0-9]+)Y[0-1][0-9]M" "$1" .max_age )) }}
 {{ $start_hour := (mod (int (replaceRE "^0?([1-2]?[0-9]):.*" "$1" .start_time)) 12) }}
 {{ if eq $start_hour 0 }}
 {{ $start_hour = 12 }}
@@ -10,7 +12,7 @@
 {{ end }}
 {{ $end_time := replaceRE "^[^:]+" $end_hour .end_time }}
 <a class="unstyled" href="#{{ $id }}">
-<article class="card">
+<article class="card" data-minage="{{$min_age}}" data-maxage="{{$max_age}}">
   {{ if lt .openings.calculated_openings 1 }}
   <span class="full">FULL</span>
   {{ end }}
