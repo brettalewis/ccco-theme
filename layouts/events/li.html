@@ -4,7 +4,7 @@
         <span>
           <strong> {{ .Params.name }}</strong>
           <br />
-          {{ dateFormat "Jan 02 3:04pm" .Params.startdate }}
+          {{ dateFormat "Jan 02 @ 3:04pm" .Params.startdate.Local }}
         </span>
       </div>
       <div class="event-description">
