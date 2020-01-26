@@ -1,0 +1,7 @@
+{{ define "main" }}
+<article class="company-list">
+  {{ range .Pages }}
+    {{ .Render "summary" }}
+  {{ end }}
+</article>
+{{ end }}
