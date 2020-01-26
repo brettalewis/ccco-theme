@@ -1,11 +1,10 @@
 {{ define "main" }}
-{{ $photo := (dict "photo" .Params.photo "transforms" (slice "ar_1:1,c_crop" "c_limit,w_300" "g_face:center" "r_max"))}}
-<h2>{{ .Params.name }}</h2>
-<h3>{{ .Params.job_title }}</h3>
-{{ dateFormat "Jan 02 @ 3:04pm" .Params.startdate.Local }}
-{{ with .Params.photo }}
-{{ partial "cloudinary" $photo }}
-{{ end }}
-
-{{ .Content }}
+<article class="event">
+  <h2>{{ .Params.name }}</h2>
+  <h3>{{ dateFormat "Jan 02 @ 3:04pm" .Params.startdate.Local }}</h3>
+  <img src="{{ .Params.photo }}" alt="{{ .Params.name }}" />
+  <section class="event-description">
+  {{ .Content }}
+  </section>
+</article>
 {{ end }}
