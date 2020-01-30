@@ -1,7 +1,10 @@
 .filters
   margin: 32px
   display: flex
+  flex-direction: column
   justify-content: center
+  +breakpoint('mama-bear')
+    flex-direction: row
   span,
   select
     margin: 0 10px

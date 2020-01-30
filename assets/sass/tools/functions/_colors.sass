@@ -1,0 +1,34 @@
+// Setting defaults
+$grays        : ()   !default
+$colors       : ()   !default
+$theme-colors : ()   !default
+
+// color: Retrieve color Sass maps
+@function color($key: "blue")
+  @return map-get($colors, $key)
+
+// theme-color: 
+@function theme-color($key: "primary")
+  @return map-get($theme-colors, $key)
+
+// gray
+@function gray($key: "100")
+  @return map-get($grays, $key)
+
+// Request a theme color level
+@function theme-color-level($color-name: "primary", $level: 0)
+  $color: theme-color($color-name)
+  $color-base: if($level > 0, $black, $white)
+  $level: abs($level)
+
+  @return mix($color-base, $color, $level * $theme-color-interval)s
+
+@function my-rgba($color: #ffffff, $opacity: 1)
+  @return "rgba(#{red($color)}, #{green($color)}, #{blue($color)}, #{$opacity})"
+  
+@function lin-gradient($color-list, $opacity: 1)
+  $retval: []
+  $num-colors: length($color-list) - 1
+  @for $_ from 0 through $num-colors
+    $retval: append($retval, "#{my-rgba(nth($color-list, $_ + 1), $opacity)} #{100 * $_/$num-colors}%", $separator: comma)
+  @return linear-gradient(90deg, #{($retval)})
