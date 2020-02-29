@@ -1,10 +1,5 @@
 {{ define "main" }}
 
-{{ $mainOptions := (dict "targetPath" "css/home.css" "outputStyle" "compressed" "enableSourceMap" false ) }}
-{{ $home := resources.Get "sass/home.sass" | resources.ToCSS $mainOptions }}
-
-<link href="{{ $home.RelPermalink }}" rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
 {{ partial "carousel" . }}
 
 {{ partial "about-us" . }}
