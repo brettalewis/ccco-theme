@@ -24,9 +24,9 @@
   <span>{{ index .instructors 0 }}</span>
   {{ end }}
   <span>
-    {{ .start_date }} - {{ .end_date }}
-{{/*    {{ $start_time }} - {{ $end_time }}
-*/}}  </span>    
+    {{ if .meeting_days.mon }}Mon{{ else if .meeting_days.tue }}Tue{{ else if .meeting_days.wed }}Wed{{ else if .meeting_days.thu }}Thu{{ else if .meeting_days.fri }}Fri{{ else if .meeting_days.sat }}Sat{{ else if .meeting_days.sun }}Sun{{end}}
+    {{ $start_time }} - {{ $end_time }}
+  </span>    
 </article>
 </a>
 
