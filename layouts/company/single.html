@@ -14,65 +14,19 @@
   <section class="company-links">
     <h4>Quick Links</h4>
     <ul>
-      {{ if .Params.resources.forms }}
+      {{ range .Params.resources }}
+      {{ if .section.items }}
       <li>
-        Forms
+        {{ .section.header }}
         <ul>
-        {{ range .Params.resources.forms }}
+        {{ range .section.items }}
           <li>
-            <a href="{{ .form_url }}" target="_blank">{{ .form_title }}</a>
+            <a href="{{ .url }}" target="_blank">{{ .title }}</a>
           </li>
         {{ end }}
         </ul>
       </li>
       {{ end }}
-      {{ if .Params.resources.general_info }}
-      <li>
-        General Information
-        <ul>
-        {{ range .Params.resources.general_info }}
-          <li>
-            <a href="{{ .file_path }}" target="_blank">{{ .file_title }}</a>
-          </li>
-        {{ end }}
-        </ul>
-      </li>
-      {{ end }}
-      {{ if .Params.resources.guidelines }}
-      <li>
-        Guidelines
-        <ul>
-        {{ range .Params.resources.guidelines }}
-          <li>
-            <a href="{{ .file_path }}" target="_blank">{{ .file_title }}</a>
-          </li>
-        {{ end }}
-        </ul>
-      </li>
-      {{ end }}
-      {{ if .Params.resources.sdt_guidelines }}
-      <li>
-        S/D/T Guidelines
-        <ul>
-        {{ range .Params.resources.sdt_guidelines }}
-          <li>
-            <a href="{{ .file_path }}" target="_blank">{{ .file_title }}</a>
-          </li>
-        {{ end }}
-        </ul>
-      </li>
-      {{ end }}
-      {{ if .Params.resources.schedule }}
-      <li>
-        Schedule
-        <ul>
-        {{ range .Params.resources.schedule }}
-          <li>
-            <a href="{{ .file_path }}" target="_blank">{{ .file_title }}</a>
-          </li>
-        {{ end }}
-        </ul>
-      </li>
       {{ end }}
     </ul>
   </section>
