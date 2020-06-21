@@ -4,11 +4,78 @@
 {{ $fileURL := (split .Params.photo "/upload/") }}
 {{ $desktop_file := (delimit (slice (index $fileURL 0) "upload" | append $desktop_transforms | append (index $fileURL 1)) "/") }}
 
-<article class="company-summary">
+<article class="company">
   <img
     src="{{ $desktop_file }}" alt="{{ .Params.name }}">
   <section class="company-description">
-    {{ .Content}}
+    {{ .Content }}
   </section>
+  {{ if .Params.resources }}
+  <section class="company-links">
+    <h4>Quick Links</h4>
+    <ul>
+      {{ if .Params.resources.forms }}
+      <li>
+        Forms
+        <ul>
+        {{ range .Params.resources.forms }}
+          <li>
+            <a href="{{ .form_url }}" target="_blank">{{ .form_title }}</a>
+          </li>
+        {{ end }}
+        </ul>
+      </li>
+      {{ end }}
+      {{ if .Params.resources.general_info }}
+      <li>
+        General Information
+        <ul>
+        {{ range .Params.resources.general_info }}
+          <li>
+            <a href="{{ .file_path }}" target="_blank">{{ .ile_title }}</a>
+          </li>
+        {{ end }}
+        </ul>
+      </li>
+      {{ end }}
+      {{ if .Params.resources.guidelines }}
+      <li>
+        Guidelines
+        <ul>
+        {{ range .Params.resources.guidelines }}
+          <li>
+            <a href="{{ .file_path }}" target="_blank">{{ .file_title }}</a>
+          </li>
+        {{ end }}
+        </ul>
+      </li>
+      {{ end }}
+      {{ if .Params.resources.sdt_guidelines }}
+      <li>
+        S/D/T Guidelines
+        <ul>
+        {{ range .Params.resources.sdt_guidelines }}
+          <li>
+            <a href="{{ .file_path }}" target="_blank">{{ .file_title }}</a>
+          </li>
+        {{ end }}
+        </ul>
+      </li>
+      {{ end }}
+      {{ if .Params.resources.schedule }}
+      <li>
+        Schedule
+        <ul>
+        {{ range .Params.resources.schedule }}
+          <li>
+            <a href="{{ .file_path }}" target="_blank">{{ .file_title }}</a>
+          </li>
+        {{ end }}
+        </ul>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
 </article>
 {{ end }}
