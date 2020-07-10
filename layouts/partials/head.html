@@ -1,5 +1,5 @@
-{{ $mainOptions := (dict "targetPath" "css/main.css" "outputStyle" "compressed" "enableSourceMap" false ) }}
-{{ $main := resources.Get "sass/main.sass" | resources.ToCSS $mainOptions }}
+{{ $mainOptions := (dict "targetPath" "css/main.css" ) }}
+{{ $main := resources.Get "sass/main.sass" | resources.ToCSS $mainOptions | resources.PostCSS (dict "config" "assets/css/postcss.config.js" "noMap" true) }}
 <head>
   <meta charset="utf-8">
   <title>{{ block "title" . }}{{ .Site.Title }}{{- with .Title }} | {{ . }}{{ end }}{{ end }}</title>
