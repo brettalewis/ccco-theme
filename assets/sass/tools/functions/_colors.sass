@@ -7,7 +7,7 @@ $theme-colors : ()   !default
 @function color($key: "blue")
   @return map-get($colors, $key)
 
-// theme-color: 
+// theme-color:
 @function theme-color($key: "primary")
   @return map-get($theme-colors, $key)
 
@@ -21,11 +21,11 @@ $theme-colors : ()   !default
   $color-base: if($level > 0, $black, $white)
   $level: abs($level)
 
-  @return mix($color-base, $color, $level * $theme-color-interval)s
+  @return mix($color-base, $color, $level * $theme-color-interval)
 
 @function my-rgba($color: #ffffff, $opacity: 1)
   @return "rgba(#{red($color)}, #{green($color)}, #{blue($color)}, #{$opacity})"
-  
+
 @function lin-gradient($color-list, $opacity: 1)
   $retval: []
   $num-colors: length($color-list) - 1

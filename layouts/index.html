@@ -1,5 +1,9 @@
 {{ define "main" }}
 
+{{ with .Params.alert }}<div class="alert alert-info">
+<span class="alert-heading"><b>{{.title}}</b></span><br>
+{{ .description | safeHTML }}</div>{{ end }}
+
 {{ partial "carousel" . }}
 
 {{ partial "about-us" . }}
