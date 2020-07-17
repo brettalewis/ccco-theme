@@ -1,9 +1,11 @@
 {{ define "main" }}
 <ul class="staff-list">
   {{ range .Pages }}
+    {{ with .Params.photo }}
     {{ $transforms := (slice "ar_1:1,c_crop" "c_limit,w_300" "g_face:center") }}
-    {{ $fileURL := (split .Params.photo "/upload/") }}
+    {{ $fileURL := (split . "/upload/") }}
     {{ $file := (delimit (slice (index $fileURL 0) "upload" | append $transforms | append (index $fileURL 1)) "/") }}
+    {{ end }}
     <li>
       <a href="#{{ .Params.name | urlize }}">
         <figure class="staff-card">
@@ -19,7 +21,9 @@
             <div class="css-modal_header"><a href="#!" class="close-icon">&#x2715;</a></div>
               <div class="css-modal_content">
                 <div class="staff-modal">
+                  {{ with $file }}
                   <img src="{{ $file }}"/>
+                  {{ end }}
                   <strong>{{ .Params.name }}</strong>
                   <em>{{ .Params.job_title }}</em>
                   <p>{{ .Content }}</p>
