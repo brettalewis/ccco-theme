@@ -1,6 +1,7 @@
 {{ define "main" }}
 <ul class="staff-list">
   {{ range .Pages }}
+    {{ $file := "" }}
     {{ with .Params.photo }}
     {{ $transforms := (slice "ar_1:1,c_crop" "c_limit,w_300" "g_face:center") }}
     {{ $fileURL := (split . "/upload/") }}
@@ -21,7 +22,7 @@
             <div class="css-modal_header"><a href="#!" class="close-icon">&#x2715;</a></div>
               <div class="css-modal_content">
                 <div class="staff-modal">
-                  {{ with $file }}
+                  {{ with .Params.photo }}
                   <img src="{{ $file }}"/>
                   {{ end }}
                   <strong>{{ .Params.name }}</strong>
