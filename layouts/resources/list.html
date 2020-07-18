@@ -1,3 +1,29 @@
 {{ define "main" }}
-Hello.
+  <article class="resources">
+    <section class="resource-summary">
+      {{ .Content }}
+    </section>
+    {{ if .Params.resources }}
+    <section class="resource-links">
+      <h4>Resources</h4>
+      <ul>
+        {{ range .Params.resources }}
+        {{ if .section.items }}
+        <li>
+          {{ .section.header }}
+          <ul>
+          {{ range .section.items }}
+            <li>
+              <a href="{{ .url }}" target="_blank">{{ .title }}</a>
+            </li>
+          {{ end }}
+          </ul>
+        </li>
+        {{ end }}
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </article>
+
 {{ end }}

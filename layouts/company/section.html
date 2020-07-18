@@ -1,4 +1,7 @@
 {{ define "main" }}
+<article class="company-intro">
+  {{ .Content }}
+</article>
 <article class="company-list">
   {{ range .Pages }}
     {{ .Render "summary" }}
