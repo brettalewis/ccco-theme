@@ -1,6 +1,13 @@
 {{ define "main" }}
+<h4 class="event-heading">Upcoming Events</h4>
 <ul class="event-list">
-  {{ range (sort .Pages ".Params.startdate" "desc") }}
+  {{ range (where (sort .Pages ".Params.startdate" "asc") ".Date" "ge" now) }}
+    {{ .Render "li" }}
+  {{ end }}
+</ul>
+<h4 class="event-heading">Past Events</h4>
+<ul class="event-list">
+  {{ range (where (sort .Pages ".Params.startdate" "desc") ".Date" "lt" now) }}
     {{ .Render "li" }}
   {{ end }}
 </ul>

@@ -11,7 +11,7 @@ $alert-color-level: 6 !default
 
 .alert
   font-size: .9em
-  text-align: center
+  text-align: left
   z-index: $zindex-modal
   left: 15%
   right: 15%
@@ -19,11 +19,15 @@ $alert-color-level: 6 !default
   margin-bottom: $alert-margin-bottom
   border: $alert-border-width solid transparent
   +border-radius($alert-border-radius)
+  margin-left: 64px
+  margin-right: 64px
+  margin-top: $alert-margin-bottom
 
 // Headings for larger alerts
 .alert-heading
   // Specified to prevent conflicts of changing $headings-color
   color: inherit
+  text-align: center
 
 // Provide class for links that match alerts
 .alert-link

@@ -1,6 +1,6 @@
 {{ define "main" }}
 <ul class="staff-list">
-  {{ range .Pages }}
+  {{ range sort .Pages ".Params.name" }}
     {{ $transforms := (slice "ar_1:1,c_crop" "c_limit,w_300" "g_face:center") }}
     {{ $fileURL := (split .Params.photo "/upload/") }}
     <li>
