@@ -1,27 +1,27 @@
-$alert-padding-x: .75rem !default
-$alert-padding-y: 1.25rem !default
-$alert-margin-bottom: 1rem !default
-$alert-border-width: 2px !default
-$alert-link-font-weight: $font-bold !default
-$alert-border-radius: 4px !default
-
-$alert-bg-level: -10 !default
-$alert-border-level: -9 !default
-$alert-color-level: 6 !default
+$alert-padding-x        : .75rem     !default
+$alert-padding-y        : 1.25rem    !default
+$alert-margin-x         : 64px       !default
+$alert-margin-y         : 1rem       !default
+$alert-border-width     : 2px        !default
+$alert-link-font-weight : $font-bold !default
+$alert-border-radius    : 4px        !default
+$alert-bg-level         : -10        !default
+$alert-border-level     : -9         !default
+$alert-color-level      : 6          !default
+$alert-font-size        : .9em       !default
+$alert-text-align       : left       !default
+$alert-left-right       : 15%        !default
 
 .alert
-  font-size: .9em
-  text-align: left
-  z-index: $zindex-modal
-  left: 15%
-  right: 15%
   padding: $alert-padding-y $alert-padding-x
-  margin-bottom: $alert-margin-bottom
+  margin: $alert-margin-y $alert-margin-x
   border: $alert-border-width solid transparent
+  left: $alert-left-right
+  right: $alert-left-right
+  z-index: $zindex-modal
+  font-size: $alert-font-size
+  text-align: $alert-text-align
   +border-radius($alert-border-radius)
-  margin-left: 64px
-  margin-right: 64px
-  margin-top: $alert-margin-bottom
 
 // Headings for larger alerts
 .alert-heading

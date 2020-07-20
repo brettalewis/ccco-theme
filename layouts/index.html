@@ -5,7 +5,8 @@
   <div class="alert-heading"><strong>{{.title}}</strong></div>
   {{ .description | safeHTML }}
   {{ with .url }}<a class="alert-link" href="{{.}}">Read more...</a>{{ end }}
-</div>{{ end }}
+</div>
+{{ end }}
 
 {{ partial "carousel" . }}
 
