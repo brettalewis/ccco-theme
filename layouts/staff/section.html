@@ -1,7 +1,7 @@
 {{ define "main" }}
 <ul class="staff-list">
   {{ range sort .Pages ".Params.name" }}
-    {{ $transforms := (slice "ar_1:1,c_crop" "c_limit,w_300" "g_face:center") }}
+    {{ $transforms := (slice "ar_1:1,c_crop" "c_limit,w_300" "g_face:center" "e_grayscale") }}
     {{ $fileURL := (split .Params.photo "/upload/") }}
     <li>
       <a href="#{{ .Params.name | urlize }}">
@@ -10,7 +10,7 @@
           {{ $file := (delimit (slice (index $fileURL 0) "upload" | append $transforms | append (index $fileURL 1)) "/") }}
           <img src="{{ $file }}" alt="{{ .Params.name }}" />
           {{ else }}
-          <img src="https://res.cloudinary.com/cc-co-dance-complex/image/upload/v1577812824/ccco-logo.png" alt="No image available">
+          <img src="https://res.cloudinary.com/cc-co-dance-complex/image/upload/c_scale,fl_alpha,w_300/ccco-logo.png" alt="No image available">
           {{ end }}
           <figcaption>
             <p>{{ .Params.name }}</p>
@@ -27,7 +27,7 @@
                   {{ $file := (delimit (slice (index $fileURL 0) "upload" | append $transforms | append (index $fileURL 1)) "/") }}
                   <img src="{{ $file }}"/>
                   {{ else }}
-                  <img src="https://res.cloudinary.com/cc-co-dance-complex/image/upload/v1577812824/ccco-logo.png" alt="No image available">
+                  <img src="https://res.cloudinary.com/cc-co-dance-complex/image/upload/c_scale,fl_alpha,w_300/ccco-logo.png" alt="No image available">
                   {{ end }}
                   <strong>{{ .Params.name }}</strong>
                   <em>{{ .Params.job_title }}</em>
