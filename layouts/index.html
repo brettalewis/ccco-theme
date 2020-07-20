@@ -1,11 +1,13 @@
 {{ define "main" }}
 
 {{ with .Params.alert }}
+{{ if .enabled }}
 <div class="alert alert-info">
   <div class="alert-heading"><strong>{{.title}}</strong></div>
   {{ .description | safeHTML }}
   {{ with .url }}<a class="alert-link" href="{{.}}">Read more...</a>{{ end }}
 </div>
+{{ end }}
 {{ end }}
 
 {{ partial "carousel" . }}
