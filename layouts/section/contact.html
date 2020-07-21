@@ -4,7 +4,7 @@
 <hr class="heading-rule centered">
 
 <article class="contact-grid">
-  <div class="contact-address">Address: <a href="https://www.google.com/maps/place/CC+%26+Co+Dance+Complex/@35.90013,-78.656001,17z/data=!4m13!1m7!3m6!1s0x89ac57ff019f5d9d:0xed038a778669678b!2s8863+Six+Forks+Rd,+Raleigh,+NC+27615!3b1!8m2!3d35.9001257!4d-78.6538123!3m4!1s0x89ac56325089b5e9:0x1ac97989dfb708db!8m2!3d35.9000928!4d-78.6541527">8863 Six Forks Road Raleigh, NC, 27615</a></div>
+  <div class="contact-address">Address: <a href="https://www.google.com/maps/place/CC+%26+Co+Dance+Complex/@35.90013,-78.656001,17z/data=!4m13!1m7!3m6!1s0x89ac57ff019f5d9d:0xed038a778669678b!2s8863+Six+Forks+Rd,+Raleigh,+NC+27615!3b1!8m2!3d35.9001257!4d-78.6538123!3m4!1s0x89ac56325089b5e9:0x1ac97989dfb708db!8m2!3d35.9000928!4d-78.6541527">8863 Six Forks Road, Raleigh, NC 27615</a></div>
   <div class="contact-phone">Call: <a href="tel:+19198465200">(919)846-5200</a></div>
   <div class="contact-email">Email: <a href="mailto:info@cccodance.com">info@cccodance.com</a></div>
   <div class="contact-facebook">Facebook: <a href="https://www.facebook.com/cccodance/">facebook.com/cccodance</a></div>
@@ -31,7 +31,7 @@
     <div>Thursday: 9am - 10pm</div>
     <div>Friday: 9am - 10pm</div>
     <div>Saturday: 9am - 10pm</div>
-    <div>Sunday: 9am - 10pm</div>    
+    <div>Sunday: 9am - 10pm</div>
   </div>
 </article>
 
@@ -40,5 +40,45 @@
   <textarea class="comment" name="comment" rows="10"></textarea>
   <input class="comment-button" type="submit" value="Submit">
 </form>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://cccodance.com/",
+  "name": "CC & Company Dance Complex",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "8863 Six Forks Road",
+    "addressLocality": "Raleigh",
+    "addressRegion": "NC",
+    "postalCode": "27615",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.90013,
+    "longitude": -78.656001
+  },
+  "url": "https://cccodance.com/",
+  "telephone": "+19198465200",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "22:00"
+    }
+  ]
+}
+</script>
 
 {{ end }}
