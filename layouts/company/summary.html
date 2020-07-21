@@ -1,10 +1,15 @@
+{{ $mobile_transforms := (slice "q_auto:best" "ar_1:1,c_crop" "c_limit,w_680" "g_faces:center" "b_rgb:000000,e_gradient_fade,y_-0.5" (printf "co_rgb:ffffff,l_text:overpass_108_style_bold:%s,g_south,y_40" .Params.name))  }}
 {{ $desktop_transforms := (slice "q_auto:best" "b_rgb:000000,e_gradient_fade,y_-0.5" (printf "co_rgb:ffffff,l_text:overpass_108_style_bold:%s,g_south_east,x_100,y_40" .Params.name)) }}
 {{ $fileURL := (split .Params.photo "/upload/") }}
+{{ $mobile_file := (delimit (slice (index $fileURL 0) "upload" | append $mobile_transforms | append (index $fileURL 1)) "/") }}
 {{ $desktop_file := (delimit (slice (index $fileURL 0) "upload" | append $desktop_transforms | append (index $fileURL 1)) "/") }}
-  
+
 <article class="company-summary">
-  <img 
-    src="{{ $desktop_file }}" alt="{{ .Params.name }}">
+  <picture>
+    <source media="(max-width: 719px)" srcset="{{ $mobile_file | safeURL }}">
+    <source media="(min-width: 720px)" srcset="{{ $desktop_file | safeURL }}">
+    <img src="{{ $desktop_file }}" alt="{{ .Params.name }}">
+  </picture>
   <section class="company-description">
     {{ .Content}}
   </section>
