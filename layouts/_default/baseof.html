@@ -8,17 +8,19 @@
     </main>
     {{ partial "address" . }}
     <script src="/js/scroll.js" async defer></script>
-    
+
     <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
+      document.addEventListener("DOMContentLoaded", () => {
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", user => {
+            if (!user) {
+              window.netlifyIdentity.on("login", () => {
+                document.location.href = "/admin/";
+              });
+            }
+          });
+        }
+      });
     </script>
   </body>
 </html>
