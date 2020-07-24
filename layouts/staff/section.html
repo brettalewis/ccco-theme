@@ -36,7 +36,7 @@
                   {{ with .Params.startdate }}
                   {{ $start := . | time }}
                   {{ $diff := now.Sub $start }}
-                  <p><strong>Years at CCCO:</strong> {{ int (div $diff.Hours 8760) }}</p>
+                  <p><strong>Years at CCCO:</strong> {{ add (int (div $diff.Hours 8760)) 1 }}</p>
                   {{ end }}
                 </div>
               </div>
