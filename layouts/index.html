@@ -1,4 +1,7 @@
 {{ define "main" }}
+{{ with .Params.headline }}
+<h1 class="centered">{{ . }}</h1>
+{{ end }}
 
 {{ with .Params.alert }}
 {{ if .enabled }}
@@ -16,7 +19,7 @@
 
 {{ partial "cta/schedule" . }}
 
-{{ $events := (where (where .Site.RegularPages "Type" "events") ".Date" "ge" now )}}
+{{ $events := (union (where (where .Site.RegularPages "Type" "events") ".Date" "ge" now ) (where (where .Site.RegularPages "Type" "events") ".Params.startdate" "eq" nil))}}
 {{ if (gt (len $events) 0) }}
   <article class="whats-happening">
     <h2>What's happening</h2>
@@ -30,6 +33,8 @@
 {{ end }}
 
 {{ partial "cta/register" . }}
+
+{{ partial "partnerships" . }}
 
 <script type="application/ld+json">
   {

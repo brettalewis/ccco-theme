@@ -2,6 +2,7 @@
 $grays        : ()   !default
 $colors       : ()   !default
 $theme-colors : ()   !default
+$covid-colors : ()   !default
 
 // color: Retrieve color Sass maps
 @function color($key: "blue")
@@ -10,6 +11,10 @@ $theme-colors : ()   !default
 // theme-color:
 @function theme-color($key: "primary")
   @return map-get($theme-colors, $key)
+
+// covid-color:
+@function covid-color($key: "red")
+  @return map-get($covid-colors, $key)
 
 // gray
 @function gray($key: "100")
@@ -22,6 +27,14 @@ $theme-colors : ()   !default
   $level: abs($level)
 
   @return mix($color-base, $color, $level * $theme-color-interval)
+
+// Request a covid color level
+@function covid-color-level($color-name: "red", $level: 0)
+  $color: covid-color($color-name)
+  $color-base: if($level > 0, $black, $white)
+  $level: abs($level)
+
+  @return mix($color-base, $color, $level * $covid-color-interval)
 
 @function my-rgba($color: #ffffff, $opacity: 1)
   @return "rgba(#{red($color)}, #{green($color)}, #{blue($color)}, #{$opacity})"

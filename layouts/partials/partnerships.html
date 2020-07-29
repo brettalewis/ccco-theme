@@ -1,0 +1,13 @@
+<section class="partnerships">
+  <h3 class="centered">Partnerships</h3>
+  {{ if (gt (len .Params.partnerships) 0) }}
+  <ul class="partner-list">
+    {{ range .Params.partnerships }}
+    <li>
+      <a href="{{.partner.url}}" target="blank" rel="noindex">
+        <img src="{{.partner.logo}}" alt="{{.partner.title}}" />
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}

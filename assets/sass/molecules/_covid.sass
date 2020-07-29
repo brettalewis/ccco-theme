@@ -1,0 +1,19 @@
+$covid-bg-level         : -10        !default
+$covid-border-level     : 10         !default
+$covid-color-level      : 6          !default
+
+.covid
+  text-align: center
+  font-size: .8em
+  border-width: 0 0 1px
+  border-style: solid
+  margin-bottom: 12px
+  a
+    +unstyled-link
+    cursor: pointer
+
+  p
+    margin: 0
+@each $color, $value in $covid-colors
+  .covid-#{$color}
+    +alert-variant(covid-color-level($color, $covid-bg-level), covid-color-level($color, $covid-border-level), covid-color-level($color, $covid-color-level))

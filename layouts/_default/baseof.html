@@ -2,6 +2,9 @@
 <html lang="en-us">
   {{ partial "head" . }}
   <body>
+    {{ with .Params.covidlevel }}
+    {{ partial "covidlevel" . }}
+    {{ end }}
     {{ partial "header" . }}
     <main>
     {{ block "main" . }}{{ end }}

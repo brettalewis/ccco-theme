@@ -3,8 +3,10 @@
       <div class="event-photo" style="background: url('{{.Params.photo}}')">
         <span>
           <strong> {{ .Params.name }}</strong>
+          {{ if .Params.startdate }}
           <br />
           {{ dateFormat "Jan 02 @ 3:04pm" .Params.startdate.Local }}
+          {{ end }}
         </span>
       </div>
       <div class="event-description">

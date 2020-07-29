@@ -1,14 +1,29 @@
 {{ define "main" }}
+{{ if (gt (len (where (where .Pages ".Params.startdate" "ne" nil) ".Date" "ge" now)) 0) }}
 <h4 class="event-heading">Upcoming Events</h4>
 <ul class="event-list">
-  {{ range (where (sort .Pages ".Params.startdate" "asc") ".Date" "ge" now) }}
+  {{ range (where (sort (where .Pages ".Params.startdate" "ne" nil) ".Params.startdate" "asc") ".Date" "ge" now) }}
     {{ .Render "li" }}
   {{ end }}
 </ul>
+{{ end }}
+
+{{ if (gt (len (where .Pages ".Params.startdate" "eq" nil)) 0) }}
+<h4 class="event-heading">Ongoing Events</h4>
+<ul class="event-list">
+  {{ range (sort (where .Pages ".Params.startdate" "eq" nil) ".Params.title" "asc") }}
+    {{ .Render "li" }}
+  {{ end }}
+</ul>
+{{ end }}
+
+{{ if (gt (len (where (where .Pages ".Params.startdate" "ne" nil) ".Date" "lt" now)) 0) }}
 <h4 class="event-heading">Past Events</h4>
 <ul class="event-list">
-  {{ range (where (sort .Pages ".Params.startdate" "desc") ".Date" "lt" now) }}
+  {{ range (where (sort (where .Pages ".Params.startdate" "ne" nil) ".Params.startdate" "desc") ".Date" "lt" now) }}
     {{ .Render "li" }}
   {{ end }}
 </ul>
+{{ end }}
+
 {{ end }}
