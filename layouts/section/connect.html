@@ -1,5 +1,16 @@
 {{ define "main" }}
-<article style="text-align: center">
+<article class="connect-heading">
 {{ .Content }}
+</article>
+
+<article class="connect-body">
+  <section class="connect-image">
+    {{ with .Params.photo }}
+    <img src="{{ .Params.photo }}" alt="Connect with us!">
+    {{ end }}
+  </section>
+  <section class="connect-form">
+    {{ partial "mailchimp" . }}
+  </section>
 </article>
 {{ end }}
