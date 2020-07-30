@@ -1,5 +1,29 @@
 {{ define "main" }}
+<article class="covid-page">
+  <section class="covid-content">
+    {{ .Content }}
+  </section>
 
-{{ .Content }}
+  {{ if .Params.resources }}
+  <section class="covid-resources">
+    <h4>Quick Links</h4>
+    <ul>
+      {{ range .Params.resources }}
+      {{ if .section.items }}
+      <li>
+        {{ .section.header }}
+        <ul>
+        {{ range .section.items }}
+          <li>
+            <a href="{{ .url }}" target="_blank" rel="nofollow noreferrer">{{ .title }}</a>
+          </li>
+        {{ end }}
+        </ul>
+      </li>
+      {{ end }}
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
 
 {{ end }}
