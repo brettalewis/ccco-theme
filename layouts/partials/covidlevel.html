@@ -1,7 +1,11 @@
 <section class="covid covid-{{ . }}">
   <a href="/covid-19">
     <p>
+      {{ if eq . "summer" }}
+      <strong>COVID-19 Update:</strong> The Studio is currently operating under Summer Camp guidelines.<br>
+      {{ else }}
       <strong>COVID-19 Update:</strong> The Studio is currently in the {{ . | humanize }} Stage.<br>
+      {{ end }}
       The safety of our Staff & Students is our number one priority! Click here for our Studio Safety Procedures & Protocols.
     </p>
   </a>
