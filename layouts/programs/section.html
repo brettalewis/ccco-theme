@@ -1,6 +1,6 @@
 {{ define "main" }}
 <article class="sessions">
-  {{ range .Pages }}
+  {{ range where .Pages "Params.program_type" "class" }}
     <div class="{{.Params.sectionClass}}">
       {{ if .Pages }}
         {{ range sort .Pages ".Title" "desc" }}

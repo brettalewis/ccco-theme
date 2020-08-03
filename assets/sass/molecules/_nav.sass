@@ -55,6 +55,9 @@ nav
     height: 0
     width: 100vw
     transition: $nav-mobile-transition
+    ul
+      margin-top: 0
+      margin-left: 0
     li
       position: relative
       display: block
@@ -67,7 +70,8 @@ nav
         height: 0
         transition: $nav-mobile-transition
       &:checked + .sub-menu
-          height: $line-height * 2em // WARNING - Change when adding more items
+          background-color: $blue-fjord
+          height: $line-height * 7em // WARNING - Change when adding more items
   a
     +unstyled-link
     display: inline-block
@@ -75,17 +79,24 @@ nav
     cursor: pointer
     color: $white
     &:visited,
-    &.active
+    &:active
       color: $white
     &:hover,
-    &.focus
+    &:focus
       color: $blue-slate
+    &.button
+      font-size: 16px
+      vertical-align: top
   span.drop-icon
     display: none
   .sub-menu
     position: static
     display: none
     height: auto
+    a
+      &:hover,
+      &:focus
+        color: $blue-robins-egg
   .drop-icon
     position: absolute
     right: $spacing
@@ -124,18 +135,22 @@ nav
         a
           +unstyled-link
           color: $titanium-white
+          &.button
+            width: auto
+            padding: 0 12px
+            margin-top: -6px
         &:hover
           color: $blue-slate
           ul.sub-menu
-            background-color: #0ff
+            background-color: $blue-fjord
             overflow: hidden
             display: inline-block
-            height: $line-height * 2em !important // WARNING - Change when adding more items
+            height: $line-height * 7em !important // WARNING - Change when adding more items
             li
               float: none
               display: block
               &:hover
-                background-color: #0ff
+                background-color: $blue-fjord
       ul.sub-menu
         display: inline-block
         left: 0
@@ -146,6 +161,9 @@ nav
         width: auto
         white-space: nowrap
         transition: $nav-hover-transition
+        li
+          float: none
+          display: block
       .drop-icon
         position: relative
       .nav-item

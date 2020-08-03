@@ -1,0 +1,42 @@
+{{ define "main" }}
+
+<article class="program-info">
+  <section class="program-header">
+  {{ if (or (isset .Params "photo") (isset .Params "headline")) }}
+    {{ if isset .Params "photo" }}
+    {{ $desktop_transforms := (slice "q_auto:best" "ar_4:1,c_fill,g_north,h_400" ) }}
+    {{ $fileURL := (split .Params.photo "/upload/") }}
+    {{ $desktop_file := (delimit (slice (index $fileURL 0) "upload" | append $desktop_transforms | append (index $fileURL 1)) "/") }}
+    <img src="{{$desktop_file}}" alt="{{.Params.title}}">
+    {{ end }}
+    {{ with .Params.headline}}<h2>{{ . }}</h2>{{ end }}
+  {{ end }}
+  </section>
+  <section class="program-body">
+    <section class="program-content">
+      {{ .Content }}
+    </section>
+
+    {{ if .Params.resources }}
+    <section class="program-resources">
+      <ul>
+      {{ range .Params.resources }}
+        {{ if .section.items }}
+        <li>
+          {{ .section.header }}
+          <ul>
+          {{ range .section.items }}
+            <li>
+              <a href="{{ .url }}" target="_blank" rel="nofollow noreferrer">{{ .title }}</a>
+            </li>
+          {{ end }}
+          </ul>
+        </li>
+        {{ end }}
+      {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </section>
+</article>
+{{ end }}
