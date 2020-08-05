@@ -19,14 +19,15 @@
   <h5>{{ .name }}</h5>
   <p>
   {{ if (gt (len .instructors) 1) }}
-  <span>Multiple</span>
+  <span>Multiple<br>{{if eq .location "Main"}}Main Location{{ else }}CC's On Falls{{end}}</span>
   {{ else }}
-  <span>{{ index .instructors 0 }}</span>
+  <span>{{ index .instructors 0 }}<br>{{if eq .location "Main"}}Main Location{{ else }}CC's On Falls{{end}}</span>
   {{ end }}
-  <span>
+  <span style="text-align:right">
     {{ if .meeting_days.mon }}Mon{{ else if .meeting_days.tue }}Tue{{ else if .meeting_days.wed }}Wed{{ else if .meeting_days.thu }}Thu{{ else if .meeting_days.fri }}Fri{{ else if .meeting_days.sat }}Sat{{ else if .meeting_days.sun }}Sun{{end}}
-    {{ $start_time }} - {{ $end_time }}
-  </span>    
+    {{ $start_time }} - {{ $end_time }}<br>
+    {{ if gt $min_age 18 }}Adult{{ else }}{{ if eq $min_age $max_age }}Age {{$min_age}}{{ else }}Ages {{$min_age}} - {{$max_age}}{{ end }}{{ end }}
+  </span>
 </article>
 </a>
 
@@ -38,6 +39,8 @@
         <div class="css-modal_footer">
           {{ if ge .openings.calculated_openings 1 }}
             <a href="{{htmlUnescape .online_reg_link }}" class="button">Register</a>
+          {{ else }}
+            <a href="{{htmlUnescape .online_reg_link }}" class="button">Register for Waitlist</a>
           {{ end }}
           <a href="#!" class="button" title="Close this modal" data-close="Close" data-dismiss="modal">Close</a>
         </div>

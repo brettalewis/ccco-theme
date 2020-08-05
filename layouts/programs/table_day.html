@@ -16,9 +16,12 @@
 {{ $byDay := (slice $mon $tue $wed $thu $fri $sat $sun) }}
 {{ $days := (slice "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday" )}}
 
-{{ if (and (ne .Params.minage nil) (ne .Params.maxage nil)) }}
 <h2 style="text-align: center;">{{ .Params.title }}</h2>
 <hr class="heading-rule centered">
+<section class="program-info">
+{{.Content}}
+</section>
+{{ if (and (ne .Params.minage nil) (ne .Params.maxage nil)) }}
 <section class="filters">
   <span>Filter by age: </span>
   <select id="minage" onchange="filter()">
@@ -75,7 +78,7 @@
     <h3 class="card-header">{{ index $days $idx }}</h3>
     <article class="card-list">
       {{ range sort $day ".start_time" "asc" }}
-        {{ partial "program" . }}
+        {{ partial "program_day" . }}
       {{ end }}
     </article>
     </div>
