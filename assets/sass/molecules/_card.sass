@@ -30,7 +30,7 @@ $card-ribbon-text-color: #fff !default
 .card
   display: flex
   flex-direction: column
-  justify-content: space-between
+  justify-content: space-around
   overflow: hidden
   position: relative
   background-color: $card-background-color
@@ -44,13 +44,16 @@ $card-ribbon-text-color: #fff !default
     text-transform: none
     color: $card-header-text-color
     font-size: $card-header-font-size
-    margin-bottom: $card-margin
+    margin-top: -1 * $card-margin
+    margin-bottom: 0
+
   p
     display: flex
     justify-content: space-between
     align-items: flex-end
     font-size: $card-body-font-size
     margin: $card-body-margin
+    margin-bottom: -1 * $card-margin
   .full
     width: 50px
     position: absolute
