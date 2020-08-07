@@ -19,14 +19,16 @@
   <h5>{{ .name }}</h5>
   <p>
   {{ if (gt (len .instructors) 1) }}
-  <span>Multiple</span>
+  <span>Multiple<br>{{if eq .location "Main"}}Main Location{{ else }}CC's On Falls{{end}}</span>
   {{ else }}
-  <span>{{ index .instructors 0 }}</span>
+  <span>{{ index .instructors 0 }}<br>{{if eq .location "Main"}}Main Location{{ else }}CC's On Falls{{end}}</span>
   {{ end }}
-  <span>
+  <span style="text-align:right">
     {{ .start_date }} - {{ .end_date }}
-{{/*    {{ $start_time }} - {{ $end_time }}
-*/}}  </span>    
+    {{ if gt $min_age 0 }}<br>
+    {{ if ge $min_age 18 }}Adult{{ else }}{{ if eq $min_age $max_age }}Age {{$min_age}}{{ else }}Ages {{$min_age}} - {{$max_age}}{{ end }}{{ end }}
+    {{ end }}
+  </span>    
 </article>
 </a>
 

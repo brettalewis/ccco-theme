@@ -7,11 +7,14 @@
 {{ $classList := getJSON $jrURL (querify "OrgID" 525640 "Session" .Params.session "Cat1" .Params.category1 "Cat2" .Params.category2 "Cat3" .Params.category3) }}
 
 {{ $weekMap := dict }}
+{{ $weekLabel := dict }}
 {{ range $class := $classList.rows }}
   {{ $yearWeek := div (add (time $class.start_date).YearDay 1) 7 }}
-  {{ $weekKey := (printf "Week %d" (sub $yearWeek 25)) }}
+  {{ $weekKey := (printf "Week %02d" $yearWeek) }}
+  {{ $weekLabelKey := (printf "Week of %s" (((time $.Params.initialDate).AddDate 0 0 (int (mul 7 $yearWeek))).Format "January 2, 2006")) }}
   {{ if ( ge (sub (time $class.end_date).YearDay (time $class.start_date).YearDay) 7 )}}
-    {{ $weekKey = "Multiple Weeks"}}
+    {{ $weekKey = "Multiple Weeks" }}
+    {{ $weekLabelKey = "Multiple Weeks" }}
   {{ end }}
   {{ $week := slice . }}
   {{ if isset $weekMap $weekKey }}
@@ -19,6 +22,7 @@
   {{ else }}
   {{ end }}
   {{ $weekMap = merge $weekMap (dict $weekKey $week)}}
+  {{ $weekLabel = merge $weekLabel (dict $weekKey $weekLabelKey) }}
 {{ end }}
 
 {{ if (and (ne .Params.minage nil) (ne .Params.maxage nil)) }}
@@ -77,7 +81,7 @@
 {{ range $idx, $week := $weekMap }}
 {{ if (gt (len $week) 0) }}
   <div class="card-list-container">
-  <h3 class="card-header">{{$idx}}</h3>
+  <h3 class="card-header">{{index $weekLabel $idx}}</h3>
   <article class="card-list">
     {{ range sort $week ".start_time" "asc" }}
       {{ partial "program" . }}
