@@ -25,9 +25,12 @@
   {{ $weekLabel = merge $weekLabel (dict $weekKey $weekLabelKey) }}
 {{ end }}
 
-{{ if (and (ne .Params.minage nil) (ne .Params.maxage nil)) }}
 <h2 style="text-align: center;">{{ .Params.title }}</h2>
 <hr class="heading-rule centered">
+<section class="program-info">
+{{.Content}}
+</section>
+{{ if (and (ne .Params.minage nil) (ne .Params.maxage nil)) }}
 <section class="filters">
   <span>Filter by age: </span>
   <select id="minage" onchange="filter()">
