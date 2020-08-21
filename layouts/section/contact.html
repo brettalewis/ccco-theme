@@ -24,8 +24,12 @@
   </div>
 </article>
 
-<form class="feedback-form" method="POST" data-netlify="true">
-  <label class="comment-label" for="comment">Leave us a message!</label>
+<form class="feedback-form" method="POST" netlify-honeypot="fax" data-netlify="true">
+  <p class="comment-label">Leave us a message!</p>
+  <p class="hidden"><label for="fax">Do not fill out if you are human<input name="fax"></label></p>
+  <label class="email-label" for="email">Email Address</label>
+  <input class="email" name="email" type="email" required="true">
+  <label class="comment-label" for="comment">Comment:</label>
   <textarea class="comment" name="comment" rows="10"></textarea>
   <input class="comment-button" type="submit" value="Submit">
 </form>

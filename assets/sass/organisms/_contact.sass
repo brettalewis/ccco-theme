@@ -56,20 +56,26 @@
 
 .feedback-form
   margin: 0 32px
+  .email-label,
+  .email,
   .comment-label,
   .comment
     padding-left: auto
     padding-right: auto
     display: block
     width: 100%
+  .email
+    max-width: 400px
   +breakpoint('papa-bear')
     margin: 0 64px
     display: grid
     grid-template-columns: repeat(18, 1fr)
-    grid-template-rows: 1fr 8fr 1fr
+    grid-template-rows: repeat(4, .5fr) 8fr 1fr
+    .email-label,
+    .email,
     .comment-label,
     .comment
       grid-column: 3 / -3
     .comment-button
       grid-column: 3
-      grid-row: 3
+      grid-row: 6
