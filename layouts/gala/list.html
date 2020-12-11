@@ -1,0 +1,33 @@
+{{ define "main" }}
+{{ $desktop_transforms := (slice "q_auto:best" "ar_4:1,c_fill,g_north,h_400" ) }}
+{{ $fileURL := (split .Params.photo "/upload/") }}
+{{ $desktop_file := (delimit (slice (index $fileURL 0) "upload" | append $desktop_transforms | append (index $fileURL 1)) "/") }}
+  <article class="resources">
+    <section class="resource-summary">
+      <img src="{{ $desktop_file }}" alt="Resources"/>
+      {{ .Content }}
+    </section>
+    {{ if .Params.resources }}
+    <section class="resource-links">
+      <h4>Resources</h4>
+      <ul>
+        {{ range .Params.resources }}
+        {{ if .section.items }}
+        <li>
+          {{ .section.header }}
+          <ul>
+          {{ range .section.items }}
+            <li>
+              <a href="{{ .url }}" target="_blank" rel="nofollow noreferrer">{{ .title }}</a>
+            </li>
+          {{ end }}
+          </ul>
+        </li>
+        {{ end }}
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </article>
+
+{{ end }}
