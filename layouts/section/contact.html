@@ -28,6 +28,12 @@
   </div>
 </article>
 
+{{ with .Params.calendarImage }}
+<article class="calendar-image">
+  <img src="{{ .Params.calendarImage }}" alt="Calendar">
+</article>
+{{ end }}
+
 <form class="feedback-form" method="POST" netlify-honeypot="fax" data-netlify="true">
   <p class="comment-label">Leave us a message!</p>
   <p class="hidden"><label for="fax">Do not fill out if you are human<input name="fax"></label></p>
