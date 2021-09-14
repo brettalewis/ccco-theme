@@ -28,7 +28,7 @@
     {{ if gt $min_age 0 }}<br>
     {{ if ge $min_age 18 }}Adult{{ else }}{{ if eq $min_age $max_age }}Age {{$min_age}}{{ else }}Ages {{$min_age}} - {{$max_age}}{{ end }}{{ end }}
     {{ end }}
-  </span>    
+  </span>
 </article>
 </a>
 
@@ -39,7 +39,7 @@
         <div class="css-modal_content">{{ .description }}</div>
         <div class="css-modal_footer">
           {{ if ge .openings.calculated_openings 1 }}
-            <a href="/programs" class="button">Register</a>
+            <a href="{{htmlUnescape .online_reg_link }}" class="button">Register</a>
           {{ end }}
           <a href="#!" class="button" title="Close this modal" data-close="Close" data-dismiss="modal">Close</a>
         </div>
