@@ -15,4 +15,6 @@
 
   <script defer type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   {{ template "_internal/google_analytics_async.html" . }}
+
+  {{ partial "mailchimp/popup.html" . }}
 </head>
