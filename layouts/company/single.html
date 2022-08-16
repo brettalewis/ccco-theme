@@ -1,12 +1,16 @@
 {{ define "main" }}
 
+{{ $desktop_file := "" }}
+{{ if .Params.photo }}
 {{ $desktop_transforms := (slice "q_auto:best" "b_rgb:000000,e_gradient_fade,y_-0.5" (printf "co_rgb:ffffff,l_text:overpass_108_style_bold:%s,g_south_east,x_100,y_40" .Params.name)) }}
 {{ $fileURL := (split .Params.photo "/upload/") }}
-{{ $desktop_file := (delimit (slice (index $fileURL 0) "upload" | append $desktop_transforms | append (index $fileURL 1)) "/") }}
-
+{{ $desktop_file = (delimit (slice (index $fileURL 0) "upload" | append $desktop_transforms | append (index $fileURL 1)) "/") }}
+{{ end }}
 <article class="company">
+  {{ if .Params.photo }}
   <img
     src="{{ $desktop_file }}" alt="{{ .Params.name }}">
+  {{ end }}
   <section class="company-description">
     {{ .Content }}
   </section>
